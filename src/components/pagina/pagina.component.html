@@ -1,0 +1,39 @@
+<app-slider [nombre]="'Página'"
+            [size]="'big'"
+></app-slider>
+
+<div class="center">
+    <section id="content">
+        
+        <h1 class="subheader">Página de pruebas</h1>
+        <!-- <div *ngif ="nombre && apellidos">
+    <h2>El nombre es: {{ nombre }}</h2>
+    <h2>El apellido es: {{ apellidos }}</h2>
+</div>
+
+<div *ngif ="!nombre || !apellidos">
+    <h2>No hay parametros por la url</h2>
+</div> -->
+ 
+ @if (nombre && apellidos){
+    <div>
+        <h2>El nombre es: {{ nombre }}</h2>
+        <h2>El apellido es: {{ apellidos }}</h2>
+    </div>
+ } @else {
+    <div>
+        <h2>No hay parametros por la url</h2>
+    </div>
+ }
+ 
+<button (click)="redireccion()">Llevame al formulario</button> 
+    </section>
+    <hr>
+    <app-sidebar></app-sidebar>
+</div>
+
+
+
+
+ 
+

@@ -1,0 +1,55 @@
+<div class="center">
+    <section id="content">
+
+        <h1 class="subheader">Crear Articulo</h1>
+
+        <form class="mid-form" #articleForm="ngForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+                <label for="title">Titulo</label>
+                <input type="text" name="title" #title="ngModel" [(ngModel)]="article.title" required />
+
+                @if (!title.valid && title.touched){
+                <small>
+                    El titulo no es válido
+                </small>
+                }
+            </div>
+
+            <div class="form-group">
+                <label for="content">Contenido</label>
+                <textarea name="content" #content="ngModel" [(ngModel)]="article.content" required></textarea>
+
+                @if (!content.valid && content.touched){
+                <small>
+                    El contenido no es válido
+                </small>
+                }
+            </div>
+
+            <div class="form-group">
+
+                <label for="image">Imagen</label>
+                <br>
+                <!-- <input type="file" name="image0" #title="ngModel" [(ngModel)]="article.image" /> -->
+                  
+                <app-file-upload></app-file-upload>
+                <!-- @if (!image.valid && image.touched){
+                <small>
+                    El titulo no es válido
+                </small>
+                } -->
+            </div>
+            <br>
+
+            <div class="clearfix"></div>
+
+            <input type="submit" value="Guardar" class="btn btn-success" [disabled]="articleForm.invalid" />
+
+        </form>
+
+    </section>
+
+    <hr>
+    <app-sidebar></app-sidebar>
+</div>
