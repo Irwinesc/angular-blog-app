@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "blog-app": {
+    "angular-proyect": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/blog-app",
+            "outputPath": "dist/angular-proyect",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -57,10 +57,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "blog-app:build:production"
+              "buildTarget": "angular-proyect:build:production"
             },
             "development": {
-              "buildTarget": "blog-app:build:development"
+              "buildTarget": "angular-proyect:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +68,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "blog-app:build"
+            "buildTarget": "angular-proyect:build"
           }
         },
         "test": {
