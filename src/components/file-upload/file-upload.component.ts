@@ -15,6 +15,9 @@ import { Article } from '../../models/article';
 export class FileUploadComponent {
   public fileName: any;
   public article!: Article;
+
+  public data!: any;
+  public image!: string;
   /*------------------------------------------
     --------------------------------------------
     Declare Form
@@ -68,13 +71,15 @@ export class FileUploadComponent {
     const fileSourceValue = this.myForm.get('fileSource')?.value;
 
     if (fileSourceValue !== null && fileSourceValue !== undefined) {
-      formData.append('file_name', fileSourceValue);
+      formData.append('file0', fileSourceValue);
     }
 
     this.http.post('http://localhost:3900/api/upload-image', formData)
       .subscribe(res => {
         console.log(res);
         alert('Uploaded Successfully.');
+        this.data = res;
+        this.image = this.data.image;
       })
   }
 }
