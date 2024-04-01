@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { Article } from '../../models/article';
 
 @Component({
   selector: 'app-file-upload',
@@ -13,6 +14,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 })
 export class FileUploadComponent {
   public fileName: any;
+  public article!: Article;
   /*------------------------------------------
     --------------------------------------------
     Declare Form
@@ -66,7 +68,7 @@ export class FileUploadComponent {
     const fileSourceValue = this.myForm.get('fileSource')?.value;
 
     if (fileSourceValue !== null && fileSourceValue !== undefined) {
-      formData.append('file', fileSourceValue);
+      formData.append('file_name', fileSourceValue);
     }
 
     this.http.post('http://localhost:3900/api/upload-image', formData)
