@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { Article } from '../../models/article';
 import { FormsModule } from '@angular/forms';
@@ -46,7 +46,7 @@ export class ArticleNewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
   onSubmit() {
@@ -75,20 +75,6 @@ export class ArticleNewComponent implements OnInit {
     )
   }
 
-   /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  //  get f() {
-  //   return this.myForm.controls;
-  // }
-
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   onFileSelected(event: any) {
 
     if (event.target.files.length > 0) {
@@ -100,11 +86,6 @@ export class ArticleNewComponent implements OnInit {
     }
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   subir() {
     const formData = new FormData();
 
@@ -115,15 +96,15 @@ export class ArticleNewComponent implements OnInit {
     }
     this._articleService.upload(formData).subscribe(
       response => {
-        if (response.status === 'success'){
-        this.status = 'success'
-        console.log(response);
-        alert('Uploaded Successfully.');
-        this.data = response;
-        this.image = this.data.image;
-        this.article.image = this.image;
+        if (response.status === 'success') {
+          this.status = 'success'
+          console.log(response);
+          alert('Uploaded Successfully.');
+          this.data = response;
+          this.image = this.data.image;
+          this.article.image = this.image;
         }
-        
+
       })
   }
 }

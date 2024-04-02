@@ -45,7 +45,7 @@ export class ArticleEditComponent implements OnInit {
     private _route: ActivatedRoute,
     private _articleService: ArticleService,
     private _http: HttpClient
-  ){
+  ) {
     this.article = new Article('', '', '', '', '');
     this.url = Global.url;
   }
@@ -84,14 +84,14 @@ export class ArticleEditComponent implements OnInit {
     )
   }
 
-  getArticle(){
+  getArticle() {
     this._route.params.subscribe(params => {
       let id = params['id'];
 
       this._articleService.getArticle(id).subscribe(
         response => {
           // console.log(response);
-          if(response.article){
+          if (response.article) {
             this.article = response.article;
           } else {
             this._router.navigate(['/home']);
@@ -106,20 +106,6 @@ export class ArticleEditComponent implements OnInit {
     });
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  get f() {
-    return this.myForm.controls;
-  }
-
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   onFileSelected(event: any) {
 
     if (event.target.files.length > 0) {
@@ -131,11 +117,6 @@ export class ArticleEditComponent implements OnInit {
     }
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   subir() {
     const formData = new FormData();
 
@@ -146,15 +127,15 @@ export class ArticleEditComponent implements OnInit {
     }
     this._articleService.upload(formData).subscribe(
       response => {
-        if (response.status === 'success'){
-        this.status = 'success'
-        console.log(response);
-        alert('Uploaded Successfully.');
-        this.data = response;
-        this.image = this.data.image;
-        this.article.image = this.image;
+        if (response.status === 'success') {
+          this.status = 'success'
+          console.log(response);
+          alert('Uploaded Successfully.');
+          this.data = response;
+          this.image = this.data.image;
+          this.article.image = this.image;
         }
-        
+
       })
   }
 }
