@@ -55,4 +55,7 @@ export class ArticleService {
         return this._http.delete(this.url+'article/'+id, {headers: headers});
     }
 
+    upload(formData: any):Observable<any>{
+        return this._http.post(this.url+'upload-image', formData);
+    }
 }

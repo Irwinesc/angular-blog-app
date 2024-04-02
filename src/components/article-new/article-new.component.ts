@@ -113,13 +113,16 @@ export class ArticleNewComponent implements OnInit {
     if (fileSourceValue !== null && fileSourceValue !== undefined) {
       formData.append('file0', fileSourceValue);
     }
-
-    this._http.post('http://localhost:3900/api/upload-image', formData)
-      .subscribe(res => {
-        console.log(res);
+    this._articleService.upload(formData).subscribe(
+      response => {
+        if (response.status === 'success'){
+        this.status = 'success'
+        console.log(response);
         alert('Uploaded Successfully.');
-        this.data = res;
+        this.data = response;
         this.image = this.data.image;
+        }
+        
       })
   }
 

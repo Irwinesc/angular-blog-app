@@ -1,4 +1,3 @@
-
 <div class="center">
     <section id="content">
 
@@ -28,45 +27,67 @@
             </div>
 
             @if (article.image){
-                <div class="image-thumb">
-                    <img src="{{url + '/get-image/' + article.image}}" alt="{{article.title}}" />
-                </div>
+            <div class="image-thumb">
+                <img src="{{url + '/get-image/' + article.image}}" alt="{{article.title}}" />
+            </div>
             } @else {
-                <div class="image-thumb">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-cancel" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M15 8h.01" />
-                        <path d="M12.5 21h-6.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6.5" />
-                        <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l3 3" />
-                        <path d="M14 14l1 -1c.616 -.593 1.328 -.792 2.008 -.598" />
-                        <path d="M19 19m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                        <path d="M17 21l4 -4" />
-                      </svg>
-                </div>
+            <div class="image-thumb">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-cancel" width="44"
+                    height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M15 8h.01" />
+                    <path d="M12.5 21h-6.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6.5" />
+                    <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l3 3" />
+                    <path d="M14 14l1 -1c.616 -.593 1.328 -.792 2.008 -.598" />
+                    <path d="M19 19m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                    <path d="M17 21l4 -4" />
+                </svg>
+            </div>
             }
 
-            <div class="form-group">
-                <label for="image">Imagen</label>
-                <!-- <input type="file"name="image0" #title="ngModel" [(ngModel)]="article.image"/> -->
-                <app-file-upload></app-file-upload>
+            <!--<div class="form-group">
+                <label for="image">Imagen</label>-->
+            <!-- <input type="file"name="image0" #title="ngModel" [(ngModel)]="article.image"/> -->
 
-                
-                <!-- @if (!image.valid && image.touched){
+
+
+            <!-- @if (!image.valid && image.touched){
                 <small>
                     El titulo no es válido
                 </small>
                 } -->
+            <!-- </div> -->
+
+            <!-- <div class="container">
+                <div class="form-container">
+                    <h1>{{fileName}}</h1> -->
+
+            <div class="form-group">
+                <label for="file">File</label>
+                <input name="file" id="file" type="file" class="form-control" #title="ngModel"
+                    [(ngModel)]="article.image" (change)="onFileSelected($event)">
+                <div *ngIf="f['file'].touched && f['file'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['file'].errors && f['file'].errors['required']">File is required.</div>
+                </div>
             </div>
+
+            <button class="btn btn-primary" type="button" (click)="subir()">Cargar imagen</button>
+
+            <!--</div>-->
+            <!--</div>-->
+
             <br>
-        
+
             <div class="clearfix"></div>
 
-            <input type="submit" value="Guardar" class="btn btn-success" [disabled]="articleForm.invalid"/>
+            <input type="submit" value="Guardar" class="btn btn-success" [disabled]="articleForm.invalid"
+                (click)="asignar()" />
 
         </form>
 
     </section>
-    
+
     <hr>
     <app-sidebar></app-sidebar>
 </div>

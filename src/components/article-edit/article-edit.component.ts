@@ -8,12 +8,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Global } from '../../services/global';
 import swal from 'sweetalert';
-import { FileUploadComponent } from '../file-upload/file-upload.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-article-edit',
   standalone: true,
-  imports: [SidebarComponent, FormsModule, HttpClientModule, CommonModule, FileUploadComponent],
+  imports: [SidebarComponent, FormsModule, HttpClientModule, CommonModule],
   templateUrl: './article-edit.component.html',
   styleUrl: './article-edit.component.css',
   providers: [ArticleService]
@@ -23,6 +26,19 @@ export class ArticleEditComponent implements OnInit {
   public article!: Article;
   public status!: string;
   public url!: string;
+
+  public data!: any;
+  public image!: string;
+  public fileName: any;
+  /*------------------------------------------
+    --------------------------------------------
+    Declare Form
+    --------------------------------------------
+    --------------------------------------------*/
+  myForm = new FormGroup({
+    file: new FormControl('', [Validators.required]),
+    fileSource: new FormControl('', [Validators.required])
+  });
 
   constructor(
     private _router: Router,
@@ -88,5 +104,60 @@ export class ArticleEditComponent implements OnInit {
       );
 
     });
+  }
+
+  /**
+   * Write code on Method
+   *
+   * @return response()
+   */
+  get f() {
+    return this.myForm.controls;
+  }
+
+  /**
+   * Write code on Method
+   *
+   * @return response()
+   */
+  onFileSelected(event: any) {
+
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.fileName = file.name;
+      this.myForm.patchValue({
+        fileSource: file
+      });
+    }
+  }
+
+  /**
+   * Write code on Method
+   *
+   * @return response()
+   */
+  subir() {
+    const formData = new FormData();
+
+    const fileSourceValue = this.myForm.get('fileSource')?.value;
+
+    if (fileSourceValue !== null && fileSourceValue !== undefined) {
+      formData.append('file0', fileSourceValue);
+    }
+    this._articleService.upload(formData).subscribe(
+      response => {
+        if (response.status === 'success'){
+        this.status = 'success'
+        console.log(response);
+        alert('Uploaded Successfully.');
+        this.data = response;
+        this.image = this.data.image;
+        }
+        
+      })
+  }
+
+  asignar (){
+    this.article.image = this.image;
   }
 }

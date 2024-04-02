@@ -27,42 +27,43 @@
                 }
             </div>
 
-            <div class="form-group">
+            <!--<div class="form-group">
 
                 <label for="image">Imagen</label>
                 <br>
-                <!-- <input type="file" name="image0" #title="ngModel" [(ngModel)]="article.image" /> -->
+                <input type="file" name="image0" #title="ngModel" [(ngModel)]="article.image" />
                   
-                <div class="container">
-                    <div class="form-container">
-                        <h1>{{fileName}}</h1>
-                        
-    
-                            
-                            <div class="form-group">
-                                <label for="file">File</label>
-                                <input 
-                                    id="file" 
-                                    type="file" 
-                                    class="form-control"
-                                    #title="ngModel" 
-                                    [(ngModel)]="article.image"
-                                    (change)="onFileSelected($event)">
-                                <div *ngIf="f['file'].touched && f['file'].invalid" class="alert alert-danger">
-                                    <div *ngIf="f['file'].errors && f['file'].errors['required']">File is required.</div>
-                                </div>
-                            </div>
-                                    
-                            <button class="btn btn-primary" type="submit" (click)="subir()">Cargar imagen</button>
-                        
-                    </div>
-                </div>
-                <!-- @if (!image.valid && image.touched){
+                @if (!image.valid && image.touched){
                 <small>
                     El titulo no es válido
                 </small>
-                } -->
-            </div>
+                }
+            </div>-->
+
+            <!-- <div class="container">
+                <div class="form-container">
+                    <h1>{{fileName}}</h1> -->
+                        
+                        <div class="form-group">
+                            <label for="file">File</label>
+                            <input
+                                name="file" 
+                                id="file" 
+                                type="file" 
+                                class="form-control"
+                                #title="ngModel" 
+                                [(ngModel)]="article.image"
+                                (change)="onFileSelected($event)">
+                            <div *ngIf="f['file'].touched && f['file'].invalid" class="alert alert-danger">
+                                <div *ngIf="f['file'].errors && f['file'].errors['required']">File is required.</div>
+                            </div>
+                        </div>
+                                
+                        <button class="btn btn-primary" type="button" (click)="subir()">Cargar imagen</button>
+                    
+                <!--</div>-->
+            <!--</div>-->
+
             <br>
 
             <div class="clearfix"></div>
