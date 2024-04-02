@@ -80,9 +80,9 @@ export class ArticleNewComponent implements OnInit {
    *
    * @return response()
    */
-   get f() {
-    return this.myForm.controls;
-  }
+  //  get f() {
+  //   return this.myForm.controls;
+  // }
 
   /**
    * Write code on Method
@@ -121,12 +121,9 @@ export class ArticleNewComponent implements OnInit {
         alert('Uploaded Successfully.');
         this.data = response;
         this.image = this.data.image;
+        this.article.image = this.image;
         }
         
       })
-  }
-
-  asignar (){
-    this.article.image = this.image;
   }
 }

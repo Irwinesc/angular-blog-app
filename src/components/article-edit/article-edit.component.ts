@@ -152,12 +152,9 @@ export class ArticleEditComponent implements OnInit {
         alert('Uploaded Successfully.');
         this.data = response;
         this.image = this.data.image;
+        this.article.image = this.image;
         }
         
       })
-  }
-
-  asignar (){
-    this.article.image = this.image;
   }
 }
