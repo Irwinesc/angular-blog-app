@@ -1,0 +1,30 @@
+div.fileUpload {
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+}
+
+button.btn-success {
+    text-align: center;
+    /* width: min-content; */
+    background-color: #0A497b;
+    height: 46px;
+    padding: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    
+}
+
+input.btn {
+    width: 120px;
+}
+
+.file-input {
+    display: none;
+  }
+
+  .btn {
+    max-width: 200px !important;
+  }

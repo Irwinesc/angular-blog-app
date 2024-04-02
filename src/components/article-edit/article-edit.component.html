@@ -63,30 +63,31 @@
                 <div class="form-container">
                     <h1>{{fileName}}</h1> -->
 
-                    <div class="form-group">
-                        <label for="file">Cambiar imagen</label>
-                        <br>
-                        <input name="file" id="file" type="file" class="file-input" #file="ngModel" [(ngModel)]="article.image"
-                            (change)="onFileSelected($event)"
-                            #fileUpload>
-                            @if (file.dirty){
-                                <p>
-                                    Nombre del archivo: {{fileName}}
-                                </p>
-                                } @else {
-                                    <p>Sin archivos seleccionados</p>
-                                } 
-                         <br>   
-                        <button class="btn btn-success" (click)="fileUpload.click()" type="button">Seleccionar archivo...</button>
-                        <br>    
-                    </div>
-                            
-                    <button class="btn btn-primary" type="button" (click)="subir()">Cargar imagen</button>
+            <div class="form-group fileUpload">
+                <label for="file">Imagen (Opcional)</label>
+                <br>
+                <input name="file" id="file" type="file" class="file-input" #file="ngModel" [(ngModel)]="article.image"
+                    (change)="onFileSelected($event)" #fileUpload>
+                @if (file.dirty){
+                <p>
+                    Nombre del archivo: {{fileName}}
+                </p>
+                } @else {
+                <p>Sin archivos seleccionados</p>
+                }
+                <br>
+                <button class="btn btn-success" (click)="fileUpload.click()" type="button">Seleccionar
+                    archivo...</button>
+                <br>
 
-        <br>
+                <button class="btn btn-primary" type="button" (click)="subir()">Cargar imagen</button>
+
+                <br>
+            </div>
             <div class="clearfix"></div>
 
-            <input type="submit" value="Guardar" class="btn btn-success" [disabled]="articleForm.invalid"/>
+            <input type="submit" value="Guardar" class="btn btn-success" [disabled]="articleForm.invalid" />
+            <br>
 
         </form>
 
